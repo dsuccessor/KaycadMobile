@@ -1,0 +1,262 @@
+return (
+    //   <Text style={[myStyles.titleText, {textAlign: 'center'}]}>
+    //   Student Registeration Page
+    // </Text>
+    <View style={myStyles.container}>
+      {/* Student Profile Section */}
+      <View style={[myStyles.sectionContainer, {height: '36%'}]}>
+        <Text style={[myStyles.overLayText, {textAlign: 'center'}]}>
+          Student Profile
+        </Text>
+        <TextInput style={myStyles.textInput} placeholder="Surname" />
+        <TextInput style={myStyles.textInput} placeholder="Other Names" />
+        <Dropdown
+          containerStyle={{
+            backgroundColor: 'white',
+            minHeight: 50,
+            // maxHeight: 50,
+          }}
+          itemTextStyle={{color: 'black'}}
+          itemContainerStyle={{backgroundColor: 'white'}}
+          style={[
+            dropdownmyStyles.dropdown,
+            {
+              borderWidth: 1,
+              borderColor: 'blue',
+            },
+          ]}
+          placeholderStyle={dropdownmyStyles.placeholderStyle}
+          selectedTextStyle={dropdownmyStyles.selectedTextStyle}
+          inputSearchStyle={dropdownmyStyles.inputSearchStyle}
+          iconStyle={dropdownmyStyles.iconStyle}
+          data={genderOption}
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder="Select Gender"
+          searchPlaceholder="Search..."
+          value={value}
+          onChange={item => {
+            setValue(item.value);
+          }}
+        />
+        <DatePicker
+          modal
+          open={open}
+          date={date}
+          onConfirm={myDate => {
+            setOpen(false);
+            setDate(myDate);
+            console.log(date);
+          }}
+          onCancel={() => {
+            setOpen(false);
+          }}
+          androidVariant="nativeAndroid"
+          mode="date"
+        />
+
+        <TextInput
+          style={myStyles.textInput}
+          editable={false}
+          selectTextOnFocus={false}
+          value={dob}
+          returnKeyType="next"
+          placeholderTextColor="blue"
+          autoCapitalize="sentences"
+          underlineColorAndroid="#f000"
+          blurOnSubmit={true}
+        />
+        <Pressable
+          style={[
+            myStyles.buttonStyle,
+            {zIndex: 10, position: 'relative', top: '-15%', left: 0},
+          ]}
+          onPress={() => setOpen(true)}
+        />
+      </View>
+
+      {/* Contact Info Section */}
+      <View style={[myStyles.sectionContainer, {height: '19%'}]}>
+        <Text style={[myStyles.overLayText, {textAlign: 'center'}]}>
+          Contact Information
+        </Text>
+        <TextInput style={myStyles.textInput} placeholder="Email Address" />
+        <TextInput style={myStyles.textInput} placeholder="Phone Number" />
+      </View>
+
+      {/* Other Info Section */}
+      <View style={[myStyles.sectionContainer, {height: '36%'}]}>
+        <Text style={[myStyles.overLayText, {textAlign: 'center'}]}>
+          Other Informations
+        </Text>
+        <Dropdown
+          containerStyle={{
+            backgroundColor: 'white',
+            minHeight: 50,
+            // maxHeight: 50,
+          }}
+          itemTextStyle={{color: 'black'}}
+          itemContainerStyle={{backgroundColor: 'white'}}
+          style={[
+            dropdownmyStyles.dropdown,
+            {
+              borderWidth: 1,
+              borderColor: 'blue',
+            },
+          ]}
+          placeholderStyle={dropdownmyStyles.placeholderStyle}
+          selectedTextStyle={dropdownmyStyles.selectedTextStyle}
+          inputSearchStyle={dropdownmyStyles.inputSearchStyle}
+          iconStyle={dropdownmyStyles.iconStyle}
+          data={facultyOptions}
+          search
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder="Select Faculty"
+          searchPlaceholder="Search..."
+          value={value}
+          onChange={item => {
+            setValue(item.value);
+          }}
+        />
+
+        <Dropdown
+          containerStyle={{
+            backgroundColor: 'white',
+            minHeight: 50,
+            // maxHeight: 50,
+          }}
+          itemTextStyle={{color: 'black'}}
+          itemContainerStyle={{backgroundColor: 'white'}}
+          style={[
+            dropdownmyStyles.dropdown,
+            {
+              borderWidth: 1,
+              borderColor: 'blue',
+            },
+          ]}
+          placeholderStyle={dropdownmyStyles.placeholderStyle}
+          selectedTextStyle={dropdownmyStyles.selectedTextStyle}
+          inputSearchStyle={dropdownmyStyles.inputSearchStyle}
+          iconStyle={dropdownmyStyles.iconStyle}
+          data={deptOptions}
+          search
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder="Select Department"
+          searchPlaceholder="Search..."
+          value={value}
+          onChange={item => {
+            setValue(item.value);
+          }}
+        />
+        <TextInput style={myStyles.textInput} placeholder="Password" />
+      </View>
+    </View>
+  );
+}
+
+const myStyles = Stylesheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+    flexDirection: 'row',
+    overflow: 'hidden',
+  },
+  titleText: {
+    fontSize: 13,
+    fontWeight: 'bold',
+    marginVertical: 10,
+    width: '100%',
+  },
+  sectionContainer: {
+    width: '100%',
+    padding: 10,
+    borderWidth: 1,
+    borderColor: 'blue',
+    marginVertical: 10,
+    marginRight: 10,
+  },
+  overLayText: {
+    zIndex: 10,
+    position: 'absolute',
+    top: '-4%',
+    left: '10%',
+    fontWeight: 'bold',
+    backgroundColor: 'rgb(240, 240, 240)',
+    paddingHorizontal: 10,
+  },
+  textInput: {
+    backgroundColor: '#fff',
+    borderRadius: 7,
+    fontSize: 15,
+    paddingHorizontal: 10,
+    color: 'black',
+    borderWidth: 1,
+    borderColor: 'blue',
+    minHeight: 50,
+    marginVertical: 10,
+  },
+  buttonStyle: {
+    width: '100%',
+    flexDirection: 'row',
+    height: 45,
+    borderRadius: 7,
+    marginTop: 1,
+    backgroundColor: 'transparent',
+  },
+  dropdown: {
+    height: 52,
+    borderRadius: 7,
+    paddingHorizontal: 10,
+    backgroundColor: '#fff',
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+});
+
+const dropdownmyStyles = myStylesheet.create({
+  dropdown: {
+    height: 52,
+    borderRadius: 7,
+    paddingHorizontal: 10,
+    marginVertical: 10,
+    backgroundColor: '#fff',
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  icon: {
+    marginRight: 15,
+  },
+  label: {
+    position: 'absolute',
+    backgroundColor: 'white',
+    left: 22,
+    top: 8,
+    zIndex: 9,
+    paddingHorizontal: 8,
+    fontSize: 14,
+  },
+  placeholderStyle: {
+    fontSize: 15,
+    color: 'black',
+  },
+  selectedTextStyle: {
+    fontSize: 15,
+    color: 'black',
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 12,
+    color: 'black',
+  },
+});
